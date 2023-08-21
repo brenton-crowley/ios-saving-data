@@ -29,36 +29,58 @@
 import SwiftUI
 
 struct ContentView: View {
-  @ObservedObject var taskStore: TaskStore
-  @State var modalIsPresented = false
-  
-  var body: some View {
-    NavigationView {
-      List {
-        ForEach(taskStore.prioritizedTasks) { index in
-          SectionView(prioritizedTasks: self.$taskStore.prioritizedTasks[index])
+    @ObservedObject var taskStore: TaskStore
+    @State var modalIsPresented = false
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(taskStore.prioritizedTasks) { index in
+                    SectionView(prioritizedTasks: self.$taskStore.prioritizedTasks[index])
+                }
+            }
+            .listStyle( GroupedListStyle() )
+            .navigationBarTitle("Tasks")
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing:
+                    Button(
+                        action: { self.modalIsPresented = true }
+                    ) {
+                        Image(systemName: "plus")
+                    }
+            )
         }
-      }
-      .listStyle( GroupedListStyle() )
-      .navigationBarTitle("Tasks")
-      .navigationBarItems(
-        leading: EditButton(),
-        trailing:
-          Button(
-            action: { self.modalIsPresented = true }
-          ) {
-            Image(systemName: "plus")
-          }
-      )
+        .sheet(isPresented: $modalIsPresented) {
+            NewTaskView(taskStore: self.taskStore)
+        }
+        .onAppear() {
+            loadJSON()
+        }
     }
-    .sheet(isPresented: $modalIsPresented) {
-      NewTaskView(taskStore: self.taskStore)
+    
+    private func loadJSON() {
+        
+        guard let taskJSONURL = Bundle.main.url(forResource: "Task", withExtension: "json"),
+        let prioritisedTaskJSONURL = Bundle.main.url(forResource: "PrioritizedTask", withExtension: "json") else { return }
+        
+        do {
+            let taskJSON = try Data(contentsOf: taskJSONURL)
+            let pTaskJSON = try Data(contentsOf: prioritisedTaskJSONURL)
+            let decoder = JSONDecoder()
+            let (task, prioritisedTasks) = (
+                try decoder.decode(Task.self, from: taskJSON),
+                try decoder.decode(TaskStore.PrioritizedTasks.self, from: pTaskJSON)
+            )
+        } catch let error {
+            print(error)
+        }
+                
     }
-  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView( taskStore: TaskStore() )
-  }
+    static var previews: some View {
+        ContentView( taskStore: TaskStore() )
+    }
 }
