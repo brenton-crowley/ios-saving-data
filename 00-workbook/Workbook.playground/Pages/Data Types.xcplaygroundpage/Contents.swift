@@ -67,7 +67,7 @@ MemoryLayout<UInt8>.size * favoriteBytes.count
 //:## Saving and Loading Data
 var favouriteBytesData = Data(favoriteBytes) // create a data object with the array of UInt8
 
-let favouriteBytesURL = URL( // refer to the user's document directory to save the data
+var favouriteBytesURL = URL( // refer to the user's document directory to save the data
     fileURLWithPath: "Favourite Bytes",
     relativeTo: FileManager.documentDirectoryURL
 )
@@ -80,4 +80,16 @@ let savedFavouriteBytes = Array(savedFavouriteBytesData) // convert the data bac
 favoriteBytes == savedFavouriteBytes // true
 favouriteBytesData == savedFavouriteBytesData // true
 
+//: ## String
+try favouriteBytesData.write(to: favouriteBytesURL.appendingPathExtension("txt"))
+
+let string = String(data: savedFavouriteBytesData, encoding: .utf8)!
+
+//: ## String Data Challenge
+let catsURL = URL(filePath: "Cats", directoryHint: .notDirectory, relativeTo: FileManager.documentDirectoryURL)
+
+try string.write(to: catsURL, atomically: true, encoding: .utf8)
+
+let stringFile = try Data(contentsOf: catsURL)
+let readString = String(data: stringFile, encoding: .utf8)
 
