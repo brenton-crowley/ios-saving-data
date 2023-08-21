@@ -63,3 +63,21 @@ let favoriteBytes: [UInt8] = [
 ]
 
 MemoryLayout<UInt8>.size * favoriteBytes.count
+
+//:## Saving and Loading Data
+var favouriteBytesData = Data(favoriteBytes) // create a data object with the array of UInt8
+
+let favouriteBytesURL = URL( // refer to the user's document directory to save the data
+    fileURLWithPath: "Favourite Bytes",
+    relativeTo: FileManager.documentDirectoryURL
+)
+
+try favouriteBytesData.write(to: favouriteBytesURL) // make the write happen
+
+let savedFavouriteBytesData = try Data(contentsOf: favouriteBytesURL) // read the contents of the written file.
+let savedFavouriteBytes = Array(savedFavouriteBytesData) // convert the data back into an array.
+
+favoriteBytes == savedFavouriteBytes // true
+favouriteBytesData == savedFavouriteBytesData // true
+
+
