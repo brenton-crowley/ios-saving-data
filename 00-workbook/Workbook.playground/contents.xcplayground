@@ -2,7 +2,6 @@
 <playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
     <pages>
         <page name='Paths'/>
-        <page name='Data Types'/>
         <page name='URL-Challenge'/>
     </pages>
 </playground>
