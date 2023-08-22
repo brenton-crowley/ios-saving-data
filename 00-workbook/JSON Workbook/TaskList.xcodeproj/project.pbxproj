@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,9 @@
 		556EF3AC2330849700FD33A9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF3AB2330849700FD33A9 /* FileManager.swift */; };
 		5589F393233061D4008D3719 /* Task.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F392233061D4008D3719 /* Task.json */; };
 		5589F395233063AA008D3719 /* PrioritizedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F394233063AA008D3719 /* PrioritizedTask.json */; };
+		CFDD5F162A9425F6009DB253 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD5F152A9425F6009DB253 /* Bundle.swift */; };
+		CFDD5F192A942C0D009DB253 /* Tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F172A942C0C009DB253 /* Tasks.json */; };
+		CFDD5F1A2A942C0D009DB253 /* PrioritizedTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		556EF3AB2330849700FD33A9 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		5589F392233061D4008D3719 /* Task.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Task.json; sourceTree = "<group>"; };
 		5589F394233063AA008D3719 /* PrioritizedTask.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PrioritizedTask.json; sourceTree = "<group>"; };
+		CFDD5F152A9425F6009DB253 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		CFDD5F172A942C0C009DB253 /* Tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Tasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/Tasks.json"; sourceTree = "<group>"; };
+		CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PrioritizedTasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/PrioritizedTasks.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,7 @@
 				556EF3AB2330849700FD33A9 /* FileManager.swift */,
 				493268BE2313A3FB005F77B2 /* ForEach.swift */,
 				493268BC2313A343005F77B2 /* IndexedCollection.swift */,
+				CFDD5F152A9425F6009DB253 /* Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,6 +157,8 @@
 		5589F3902330613D008D3719 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */,
+				CFDD5F172A942C0C009DB253 /* Tasks.json */,
 				49A2856622DC34F700B65A77 /* Assets.xcassets */,
 				5589F392233061D4008D3719 /* Task.json */,
 				5589F394233063AA008D3719 /* PrioritizedTask.json */,
@@ -191,8 +200,9 @@
 		49A2855522DC34F600B65A77 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Jessy Catterwaul";
 				TargetAttributes = {
 					49A2855C22DC34F600B65A77 = {
@@ -225,9 +235,11 @@
 			files = (
 				5589F393233061D4008D3719 /* Task.json in Resources */,
 				49A2856D22DC34F700B65A77 /* LaunchScreen.storyboard in Resources */,
+				CFDD5F192A942C0D009DB253 /* Tasks.json in Resources */,
 				5589F395233063AA008D3719 /* PrioritizedTask.json in Resources */,
 				49A2856A22DC34F700B65A77 /* Preview Assets.xcassets in Resources */,
 				49A2856722DC34F700B65A77 /* Assets.xcassets in Resources */,
+				CFDD5F1A2A942C0D009DB253 /* PrioritizedTasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				556EF3AC2330849700FD33A9 /* FileManager.swift in Sources */,
+				CFDD5F162A9425F6009DB253 /* Bundle.swift in Sources */,
 				493268BF2313A3FB005F77B2 /* ForEach.swift in Sources */,
 				491C6E2322DEB81A00C55030 /* Task.swift in Sources */,
 				49A2856122DC34F600B65A77 /* AppDelegate.swift in Sources */,
@@ -296,6 +309,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -356,6 +370,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

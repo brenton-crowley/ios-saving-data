@@ -44,7 +44,7 @@ struct NewTaskView: View {
         Text("Priority")
         
         Picker("Priority", selection: $priority.caseIndex) {
-          ForEach(Task.Priority.allCases.indices) { priorityIndex in
+            ForEach(Task.Priority.allCases.indices) { priorityIndex in
             Text(
               Task.Priority.allCases[priorityIndex].rawValue
                 .capitalized
