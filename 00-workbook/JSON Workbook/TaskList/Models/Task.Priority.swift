@@ -29,7 +29,5 @@
 extension Task {
     enum Priority: String, CaseIterable, Codable {
     case no, low, medium, high
-        
-    var id: UInt8 { UInt8(Priority.allCases.firstIndex(of: self)!) }
   }
 }
