@@ -30,13 +30,18 @@ import Combine
 import Foundation
 
 class TaskStore: ObservableObject {    
-    @Published var prioritizedTasks: [PrioritizedTasks] = [] {
+    @Published var prioritizedTasks: [PrioritizedTasks] = [
+        PrioritizedTasks(priority: .high, tasks: []),
+        PrioritizedTasks(priority: .medium, tasks: []),
+        PrioritizedTasks(priority: .low, tasks: []),
+        PrioritizedTasks(priority: .no, tasks: []),
+    ] {
         didSet {
             saveJSONPrioritizedTask()
         }
     }
     
-    let writeJSONURL = URL(fileURLWithPath: "Tasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+    let tasksJSONURL = URL(fileURLWithPath: "Tasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     init() {
         loadJSONPrioritisedTasks()
@@ -56,19 +61,8 @@ class TaskStore: ObservableObject {
         print((try? FileManager.default.contentsOfDirectory(atPath: FileManager.documentsDirectoryURL.path)) ?? [])
         
         do {
-            var url: URL?
-//            self.prioritizedTasks = try URL.loadBundleJSONFilename("PrioritizedTasks")
-            if #available(iOS 16.0, *) {
-                url = URL(filePath: "PrioritizedTasks", directoryHint: .notDirectory, relativeTo: .documentsDirectory)
-            } else {
-                url = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL)
-            }
             
-            guard let url = url?.appendingPathExtension("json") else { return }
-            
-            self.prioritizedTasks = try url.getModelFromJSON()
-            
-//            self.prioritizedTasks = try URL.loadJSONFromURL(url?.appendingPathExtension("json"))
+            self.prioritizedTasks = try tasksJSONURL.getModelFromJSON()
             
         } catch let error {
             print(error)
@@ -77,9 +71,7 @@ class TaskStore: ObservableObject {
     }
     
     private func saveJSONPrioritizedTask() {
-
-//        let _ = URL.writeJSONModel(prioritizedTasks, toURL: writeJSONURL)
-        writeJSONURL.writeModelToJSON(prioritizedTasks)
+        tasksJSONURL.writeModelToJSON(prioritizedTasks)
     }
 }
 
