@@ -30,7 +30,13 @@ import Combine
 import Foundation
 
 class TaskStore: ObservableObject {    
-    @Published var prioritizedTasks: [PrioritizedTasks] = []
+    @Published var prioritizedTasks: [PrioritizedTasks] = [] {
+        didSet {
+            saveJSONPrioritizedTask()
+        }
+    }
+    
+    let writeJSONURL = URL(fileURLWithPath: "Task", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     init() {
         loadJSONPrioritisedTasks()
@@ -64,6 +70,11 @@ class TaskStore: ObservableObject {
             print(error)
         }
 
+    }
+    
+    private func saveJSONPrioritizedTask() {
+
+        let _ = URL.writeJSONModel(prioritizedTasks.first?.tasks.last, toURL: writeJSONURL)
     }
 }
 
