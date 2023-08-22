@@ -8,22 +8,27 @@
 
 import Foundation
 
-extension Bundle {
+extension URL {
     
-    enum BundleError: Error  {
+    enum URLError: Error  {
         
         case noJSONFileInBundle
+        case invalidJSONFileURL
     }
     
     static func loadBundleJSONFilename<T: Codable>(_ filename: String) throws -> T {
+        try URL.loadJSONFromURL(Bundle.main.url(forResource: filename, withExtension: "json"))
+    }
+    
+    static func loadJSONFromURL<T: Codable>(_ url: URL?) throws -> T {
         
-        guard let jsonURL = Bundle.main.url(forResource: filename, withExtension: "json") else { throw BundleError.noJSONFileInBundle }
+        guard let jsonURL = url else { throw URLError.invalidJSONFileURL }
         
         let json = try Data(contentsOf: jsonURL)
         let decoder = JSONDecoder()
         let result:T = try decoder.decode(T.self, from: json)
         
         return result
+        
     }
-    
 }
