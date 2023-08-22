@@ -10,7 +10,7 @@ import Foundation
 
 extension URL {
     
-    private enum JSON<T: Codable> {
+    private enum ModelJSON<T: Codable> {
         case decode(URL), encode(T, URL)
         
         func perform() throws -> T {
@@ -18,10 +18,11 @@ extension URL {
             switch self {
             case .encode(let model, let url):
                 let encoder = JSONEncoder()
-
-                let taskData = try encoder.encode(model)
+                encoder.outputFormatting = .prettyPrinted
                 
-                try taskData.write(to: url, options: .atomic)
+                let json = try encoder.encode(model)
+                
+                try json.write(to: url, options: .atomic)
                 
                 return model
                 
@@ -38,7 +39,6 @@ extension URL {
     
     enum URLError: Error  {
         
-        case noJSONFileInBundle
         case invalidJSONFileURL
     }
     
@@ -50,13 +50,25 @@ extension URL {
         
         guard let jsonURL = url else { throw URLError.invalidJSONFileURL }
         
-        return try URL.JSON.decode(jsonURL).perform()
+        return try URL.ModelJSON.decode(jsonURL).perform()
         
+    }
+    
+    func getModelFromJSON<T: Codable>() throws -> T {
+        return try URL.ModelJSON.decode(self).perform()
     }
     
     static func writeJSONModel<T: Codable>(_ model: T, toURL url: URL) {
         do {
-            let _ = try URL.JSON.encode(model, url).perform()
+            let _ = try URL.ModelJSON.encode(model, url).perform()
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func writeModelToJSON<T: Codable>(_ model: T) {
+        do {
+            let _ = try URL.ModelJSON.encode(model, self).perform()
         } catch let error {
             print(error)
         }

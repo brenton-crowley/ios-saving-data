@@ -36,7 +36,7 @@ class TaskStore: ObservableObject {
         }
     }
     
-    let writeJSONURL = URL(fileURLWithPath: "Task", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+    let writeJSONURL = URL(fileURLWithPath: "Tasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
     
     init() {
         loadJSONPrioritisedTasks()
@@ -64,7 +64,11 @@ class TaskStore: ObservableObject {
                 url = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL)
             }
             
-            self.prioritizedTasks = try URL.loadJSONFromURL(url?.appendingPathExtension("json"))
+            guard let url = url?.appendingPathExtension("json") else { return }
+            
+            self.prioritizedTasks = try url.getModelFromJSON()
+            
+//            self.prioritizedTasks = try URL.loadJSONFromURL(url?.appendingPathExtension("json"))
             
         } catch let error {
             print(error)
@@ -74,7 +78,8 @@ class TaskStore: ObservableObject {
     
     private func saveJSONPrioritizedTask() {
 
-        let _ = URL.writeJSONModel(prioritizedTasks.first?.tasks.last, toURL: writeJSONURL)
+//        let _ = URL.writeJSONModel(prioritizedTasks, toURL: writeJSONURL)
+        writeJSONURL.writeModelToJSON(prioritizedTasks)
     }
 }
 
