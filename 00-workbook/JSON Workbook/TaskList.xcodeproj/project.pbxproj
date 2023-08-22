@@ -27,7 +27,7 @@
 		556EF3AC2330849700FD33A9 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556EF3AB2330849700FD33A9 /* FileManager.swift */; };
 		5589F393233061D4008D3719 /* Task.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F392233061D4008D3719 /* Task.json */; };
 		5589F395233063AA008D3719 /* PrioritizedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 5589F394233063AA008D3719 /* PrioritizedTask.json */; };
-		CFDD5F162A9425F6009DB253 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD5F152A9425F6009DB253 /* Bundle.swift */; };
+		CFDD5F162A9425F6009DB253 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD5F152A9425F6009DB253 /* URL.swift */; };
 		CFDD5F192A942C0D009DB253 /* Tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F172A942C0C009DB253 /* Tasks.json */; };
 		CFDD5F1A2A942C0D009DB253 /* PrioritizedTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		556EF3AB2330849700FD33A9 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		5589F392233061D4008D3719 /* Task.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Task.json; sourceTree = "<group>"; };
 		5589F394233063AA008D3719 /* PrioritizedTask.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PrioritizedTask.json; sourceTree = "<group>"; };
-		CFDD5F152A9425F6009DB253 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		CFDD5F152A9425F6009DB253 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		CFDD5F172A942C0C009DB253 /* Tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Tasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/Tasks.json"; sourceTree = "<group>"; };
 		CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PrioritizedTasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/PrioritizedTasks.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,7 +78,7 @@
 				556EF3AB2330849700FD33A9 /* FileManager.swift */,
 				493268BE2313A3FB005F77B2 /* ForEach.swift */,
 				493268BC2313A343005F77B2 /* IndexedCollection.swift */,
-				CFDD5F152A9425F6009DB253 /* Bundle.swift */,
+				CFDD5F152A9425F6009DB253 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				556EF3AC2330849700FD33A9 /* FileManager.swift in Sources */,
-				CFDD5F162A9425F6009DB253 /* Bundle.swift in Sources */,
+				CFDD5F162A9425F6009DB253 /* URL.swift in Sources */,
 				493268BF2313A3FB005F77B2 /* ForEach.swift in Sources */,
 				491C6E2322DEB81A00C55030 /* Task.swift in Sources */,
 				49A2856122DC34F600B65A77 /* AppDelegate.swift in Sources */,

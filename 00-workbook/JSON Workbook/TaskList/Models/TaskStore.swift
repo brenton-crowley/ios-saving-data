@@ -41,9 +41,25 @@ class TaskStore: ObservableObject {
     }
     
     private func loadJSONPrioritisedTasks() {
+        print(Bundle.main.bundleURL)
+        print(FileManager.documentsDirectoryURL)
+        
+        let temporaryDirectoryURL = FileManager.default.temporaryDirectory
+        print(temporaryDirectoryURL)
+        
+        print((try? FileManager.default.contentsOfDirectory(atPath: FileManager.documentsDirectoryURL.path)) ?? [])
         
         do {
-            self.prioritizedTasks = try Bundle.loadBundleJSONFilename("PrioritizedTasks")
+            var url: URL?
+//            self.prioritizedTasks = try URL.loadBundleJSONFilename("PrioritizedTasks")
+            if #available(iOS 16.0, *) {
+                url = URL(filePath: "PrioritizedTasks", directoryHint: .notDirectory, relativeTo: .documentsDirectory)
+            } else {
+                url = URL(fileURLWithPath: "PrioritizedTasks", relativeTo: FileManager.documentsDirectoryURL)
+            }
+            
+            self.prioritizedTasks = try URL.loadJSONFromURL(url?.appendingPathExtension("json"))
+            
         } catch let error {
             print(error)
         }
