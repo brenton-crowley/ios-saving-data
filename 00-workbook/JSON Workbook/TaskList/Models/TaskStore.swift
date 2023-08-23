@@ -37,21 +37,23 @@ class TaskStore: ObservableObject {
         PrioritizedTasks(priority: .no, tasks: []),
     ] {
         didSet {
-            saveJSONPrioritizedTask()
+            savePrioritizedTask()
         }
     }
     
-    let tasksJSONURL = URL(fileURLWithPath: "Tasks", relativeTo: FileManager.documentsDirectoryURL).appendingPathExtension("json")
+    static let filename = "Tasks"
+    
+    let storageService = PlistService<[PrioritizedTasks]>(filename: TaskStore.filename)
     
     init() {
-        loadJSONPrioritisedTasks()
+        loadPrioritisedTasks()
     }
     
     func getIndex(for priority: Task.Priority) -> Int {
         prioritizedTasks.firstIndex { $0.priority == priority }!
     }
     
-    private func loadJSONPrioritisedTasks() {
+    private func loadPrioritisedTasks() {
         print(Bundle.main.bundleURL)
         print(FileManager.documentsDirectoryURL)
         
@@ -62,7 +64,7 @@ class TaskStore: ObservableObject {
         
         do {
             
-            self.prioritizedTasks = try tasksJSONURL.getModelFromJSON()
+            self.prioritizedTasks = try storageService.makeModel()
             
         } catch let error {
             print(error)
@@ -70,8 +72,13 @@ class TaskStore: ObservableObject {
 
     }
     
-    private func saveJSONPrioritizedTask() {
-        tasksJSONURL.writeModelToJSON(prioritizedTasks)
+    private func savePrioritizedTask() {
+        
+        do {
+            try storageService.writeModel(prioritizedTasks)
+        } catch let error {
+            print(error)
+        }
     }
 }
 

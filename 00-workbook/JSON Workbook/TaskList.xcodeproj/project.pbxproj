@@ -30,6 +30,7 @@
 		CFDD5F162A9425F6009DB253 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD5F152A9425F6009DB253 /* URL.swift */; };
 		CFDD5F192A942C0D009DB253 /* Tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F172A942C0C009DB253 /* Tasks.json */; };
 		CFDD5F1A2A942C0D009DB253 /* PrioritizedTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */; };
+		CFDD5F1F2A947AA1009DB253 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDD5F1E2A947AA1009DB253 /* StorageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CFDD5F152A9425F6009DB253 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		CFDD5F172A942C0C009DB253 /* Tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Tasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/Tasks.json"; sourceTree = "<group>"; };
 		CFDD5F182A942C0D009DB253 /* PrioritizedTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PrioritizedTasks.json; path = "../../../../12-challenge-decoding-json-arrays/Starter/TaskList/Resources/PrioritizedTasks.json"; sourceTree = "<group>"; };
+		CFDD5F1E2A947AA1009DB253 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		49A2855F22DC34F600B65A77 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				CFDD5F1B2A94781C009DB253 /* Services */,
 				49A2856022DC34F600B65A77 /* AppDelegate.swift */,
 				49A2856222DC34F600B65A77 /* SceneDelegate.swift */,
 				49EEFE4C232484E6002A7EA8 /* Models */,
@@ -172,6 +175,14 @@
 				49A2856E22DC34F700B65A77 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFDD5F1B2A94781C009DB253 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CFDD5F1E2A947AA1009DB253 /* StorageService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 				491C6E2322DEB81A00C55030 /* Task.swift in Sources */,
 				49A2856122DC34F600B65A77 /* AppDelegate.swift in Sources */,
 				49BBDA1022ECF0EE00376C62 /* SectionView.swift in Sources */,
+				CFDD5F1F2A947AA1009DB253 /* StorageService.swift in Sources */,
 				49EEFE4E232484F6002A7EA8 /* TaskStore.PrioritizedTasks.swift in Sources */,
 				49A2856322DC34F600B65A77 /* SceneDelegate.swift in Sources */,
 				49A2856522DC34F600B65A77 /* ContentView.swift in Sources */,
